@@ -24,4 +24,4 @@ This project is MIT Licenced.
 
 ![Screenshot](https://github.com/ritheshrai/PePer-code-editor/blob/master/screenshots/PePer-Dark.png)
 
-![Screenshot](https://github.com/ritheshrai/PePer-code-editor/blob/master/screenshots/PePer-white.png)
+![Screenshot](https://github.com/ritheshrai/PePer-code-editor/blob/master/screenshots/PePer-White.png)
