@@ -17,15 +17,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -39,6 +36,7 @@ import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 import org.fife.rsta.ui.SizeGripIcon;
 import org.fife.ui.rsyntaxtextarea.ErrorStrip;
@@ -46,7 +44,6 @@ import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 import org.fife.ui.rsyntaxtextarea.Theme;
 import org.fife.ui.rtextarea.RTextScrollPane;
-import javax.swing.BoxLayout;
 import java.awt.ComponentOrientation;
 
 public class PePer {
@@ -63,7 +60,7 @@ public class PePer {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
+
 
 
 		EventQueue.invokeLater(new Runnable() {
@@ -170,36 +167,36 @@ public class PePer {
 		panel.setBackground(Color.BLACK);
 		QuicTerminal k =new QuicTerminal();
 		panel.add( k.new ConsolePane());
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.BLACK);
 
 
 		GroupLayout gl_layeredPane = new GroupLayout(layeredPane);
 		gl_layeredPane.setHorizontalGroup(
-			gl_layeredPane.createParallelGroup(Alignment.LEADING)
+				gl_layeredPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_layeredPane.createSequentialGroup()
-					.addComponent(menuPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(1)
-					.addComponent(editorPanel, GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE))
+						.addComponent(menuPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGap(1)
+						.addComponent(editorPanel, GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE))
 				.addComponent(topPanel, GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
 				.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
 				.addComponent(panel_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
-		);
+				);
 		gl_layeredPane.setVerticalGroup(
-			gl_layeredPane.createParallelGroup(Alignment.TRAILING)
+				gl_layeredPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_layeredPane.createSequentialGroup()
-					.addComponent(topPanel, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
-					.addGap(2)
-					.addGroup(gl_layeredPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(menuPanel, GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-						.addComponent(editorPanel, GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
-					.addGap(1)
-					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(1)
-					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE))
-		);
-		
+						.addComponent(topPanel, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
+						.addGap(2)
+						.addGroup(gl_layeredPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(menuPanel, GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+								.addComponent(editorPanel, GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+						.addGap(1)
+						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGap(1)
+						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE))
+				);
+
 		JLabel lblNewLabel = new JLabel("CONSOLE");
 		lblNewLabel.setToolTipText("CONSOLE: please paste clipboard contents( hit Ctrl + V )  in console after RUN button");
 		lblNewLabel.setForeground(Color.WHITE);
@@ -218,27 +215,27 @@ public class PePer {
 
 		GroupLayout gl_menuPanel = new GroupLayout(menuPanel);
 		gl_menuPanel.setHorizontalGroup(
-			gl_menuPanel.createParallelGroup(Alignment.LEADING)
+				gl_menuPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_menuPanel.createSequentialGroup()
-					.addGroup(gl_menuPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(SaveAs, GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-						.addComponent(run, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-						.addComponent(Open, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
-					.addGap(10))
+						.addGroup(gl_menuPanel.createParallelGroup(Alignment.LEADING)
+								.addComponent(SaveAs, GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+								.addComponent(run, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+								.addComponent(Open, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
+						.addGap(10))
 				.addComponent(Save, GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-		);
+				);
 		gl_menuPanel.setVerticalGroup(
-			gl_menuPanel.createParallelGroup(Alignment.LEADING)
+				gl_menuPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_menuPanel.createSequentialGroup()
-					.addComponent(Save, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(SaveAs, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-					.addGap(6)
-					.addComponent(Open, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(run)
-					.addContainerGap(170, Short.MAX_VALUE))
-		);
+						.addComponent(Save, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(SaveAs, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addGap(6)
+						.addComponent(Open, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(run)
+						.addContainerGap(170, Short.MAX_VALUE))
+				);
 		menuPanel.setLayout(gl_menuPanel);
 
 		RSyntaxTextArea	textArea = new RSyntaxTextArea(20, 60);
@@ -322,25 +319,26 @@ public class PePer {
 		//		});
 		/** 
 		 * *SAVE BUTTON LISTENERS ( well its here to access the rsyntaxtextarea)
-		  */
+		 */
 		Save.addActionListener(new ActionListener() {
-			
+
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String data=textArea.getText().trim(); //quick check
-				  if(!data.equals("")&&!data.equals("#Start your Python advancture")) {
-				statusBar.setLabel("saving......");
+				if(!data.equals("")&&!data.equals("#Start your Python advancture")) {
+					statusBar.setLabel("saving......");
 
-				if(filepath==null||saveAs==true){
-					//saving as
-					FileDialog  fd=new FileDialog(frame,"saving a python file", FileDialog.SAVE);
-					fd.setVisible(true);
-					if(fd.getFile()!=null){
-						filepath=fd.getDirectory()+"\\"+fd.getFile()+".py";
-					}
-					else {
-						statusBar.setLabel("directory selection is failed");
-					}
-				}				
+					if(filepath==null||saveAs==true){
+						//saving as
+						FileDialog  fd=new FileDialog(frame,"saving a python file", FileDialog.SAVE);
+						fd.setVisible(true);
+						if(fd.getFile()!=null){
+							filepath=fd.getDirectory()+"\\"+fd.getFile()+".py";
+						}
+						else {
+							statusBar.setLabel("directory selection is failed");
+						}
+					}				
 					/**
 					 * saving
 					 */	
@@ -367,6 +365,7 @@ public class PePer {
 		 */
 
 		SaveAs.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				statusBar.setLabel("saving As");
 				saveAs=true;
@@ -374,34 +373,34 @@ public class PePer {
 				saveAs=false;
 			}
 		});
-		
-		
+
+
 		/** 
 		 * this is for accidental close operation
 		 */
 		frame.addWindowListener(new WindowAdapter() {
-			
+
 			@Override
 			public void windowClosing(WindowEvent e) {
 				String data=textArea.getText().trim(); //quick check
-				  if(!data.equals("")&&!data.equals("#Start your Python advancture")) {
-				int result = JOptionPane.showConfirmDialog(frame,"SAVE YOUR WORK", "ALERT!",
-						JOptionPane.YES_NO_CANCEL_OPTION,
-						JOptionPane.PLAIN_MESSAGE);
-				if(result == JOptionPane.YES_OPTION){
-					Save.doClick();
-					frame.dispose();
+				if(!data.equals("")&&!data.equals("#Start your Python advancture")) {
+					int result = JOptionPane.showConfirmDialog(frame,"SAVE YOUR WORK", "ALERT!",
+							JOptionPane.YES_NO_CANCEL_OPTION,
+							JOptionPane.PLAIN_MESSAGE);
+					if(result == JOptionPane.YES_OPTION){
+						Save.doClick();
+						frame.dispose();
 
-				}else if (result == JOptionPane.NO_OPTION){
-					frame.dispose();
-				}else {
-					frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+					}else if (result == JOptionPane.NO_OPTION){
+						frame.dispose();
+					}else {
+						frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
+					}
 				}
-			}
-				  else {
-					  frame.dispose();
-					
+				else {
+					frame.dispose();
+
 				}
 			} 
 
@@ -411,6 +410,7 @@ public class PePer {
 		 * OPEN BUTTON LISTENER
 		 */
 		Open.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				statusBar.setLabel("opening......");
 				FileDialog  fd=new FileDialog(frame,"SELECT a python file", FileDialog.LOAD);
@@ -447,15 +447,16 @@ public class PePer {
 		 * RUN BUTTON LISTNER 
 		 */
 		run.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String temp=textArea.getText().trim(); //quick check on contents
-				  if(!temp.equals("")&&!temp.equals("#Start your Python advancture")) {
-				
-				statusBar.setLabel("Running on python idle......");
-				try
-				{	System.out.print(temp);
-//					Path loc=Paths.get("");
-//					String location =loc.toAbsolutePath().toString();
+				if(!temp.equals("")&&!temp.equals("#Start your Python advancture")) {
+
+					statusBar.setLabel("Running on python idle......");
+					try
+					{	System.out.print(temp);
+					//					Path loc=Paths.get("");
+					//					String location =loc.toAbsolutePath().toString();
 
 					System.out.println(relativepath);
 					statusBar.setLabel("runnung on  "+relativepath);
@@ -471,6 +472,8 @@ public class PePer {
 						StringSelection data = new StringSelection(command);
 						Clipboard cb = Toolkit.getDefaultToolkit().getSystemClipboard();
 						cb.setContents(data,null);
+						QuicTerminal qTerminal =new QuicTerminal();
+						qTerminal.SetText(command);
 						/** 
 						 * weak run code
 						 * this below commented code is not efficient but works
@@ -520,100 +523,102 @@ public class PePer {
 					}
 					else{
 						statusBar.setLabel("error!");
-						}
+					}
 
-				}catch(IOException a) {
-					statusBar.setLabel("error!");
-					a.printStackTrace();
+					}catch(IOException a) {
+						statusBar.setLabel("error!");
+						a.printStackTrace();
+					}
 				}
-				  }
-				  else {
+				else {
 					statusBar.setLabel(" Editor is Empty");
 				}	
 			}});
 		mainLogo.setActionCommand("");
 		mainLogo.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent arg0) {
-							k.chngTheme(themedark);
-							if(!themedark) {
-							menuPanel.setBackground(Color.WHITE);
-							topPanel.setBackground(Color.WHITE);
-							panel_1.setBackground(Color.white);
-							panel.setBackground(Color.white);
-							lblNewLabel.setForeground(Color.BLACK);
-							lblNewLabel.setBackground(Color.WHITE);
-							errorStrip.setBackground(Color.WHITE);
-							statusBar.setBackground(Color.WHITE);
-							try { 
-								Theme theme = Theme.load(getClass().getResourceAsStream(
-										"/org/fife/ui/rsyntaxtextarea/themes/vs.xml"));
-								theme.apply(textArea);
-								sp.getGutter().setBorderColor(Color.orange);
-								sp.getGutter().setLineNumberColor(Color.ORANGE);
-							} catch (IOException ioe) { 
-								ioe.printStackTrace();
-							}
-							themedark=true;
-							}
-							else {
-								menuPanel.setBackground(Color.black);
-								topPanel.setBackground(Color.BLACK);
-								panel_1.setBackground(Color.black);
-								panel.setBackground(Color.BLACK);
-								lblNewLabel.setForeground(Color.white);
-								lblNewLabel.setBackground(Color.black);
-								errorStrip.setBackground(Color.black);
-								statusBar.setBackground(Color.black);
-								try { 
-									Theme theme = Theme.load(getClass().getResourceAsStream(
-											"/org/fife/ui/rsyntaxtextarea/themes/dark.xml"));
-									theme.apply(textArea);
-									textArea.setBackground(Color.BLACK);
-									sp.getGutter().setBackground(Color.black);
-									sp.getGutter().setBorderColor(Color.orange);
-									sp.getGutter().setLineNumberColor(Color.ORANGE);
-								} catch (IOException ioe) { 
-									ioe.printStackTrace();
-								}
-								themedark=false;
-								}
-								
-							}
-							
-							
-					
-					});
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				k.chngTheme(themedark);
+				if(!themedark) {
+					menuPanel.setBackground(Color.WHITE);
+					topPanel.setBackground(Color.WHITE);
+					panel_1.setBackground(Color.white);
+					panel.setBackground(Color.white);
+					lblNewLabel.setForeground(Color.BLACK);
+					lblNewLabel.setBackground(Color.WHITE);
+					errorStrip.setBackground(Color.WHITE);
+					statusBar.setBackground(Color.WHITE);
+					try { 
+						Theme theme = Theme.load(getClass().getResourceAsStream(
+								"/org/fife/ui/rsyntaxtextarea/themes/vs.xml"));
+						theme.apply(textArea);
+						sp.getGutter().setBorderColor(Color.orange);
+						sp.getGutter().setLineNumberColor(Color.ORANGE);
+					} catch (IOException ioe) { 
+						ioe.printStackTrace();
+					}
+					themedark=true;
+				}
+				else {
+					menuPanel.setBackground(Color.black);
+					topPanel.setBackground(Color.BLACK);
+					panel_1.setBackground(Color.black);
+					panel.setBackground(Color.BLACK);
+					lblNewLabel.setForeground(Color.white);
+					lblNewLabel.setBackground(Color.black);
+					errorStrip.setBackground(Color.black);
+					statusBar.setBackground(Color.black);
+					try { 
+						Theme theme = Theme.load(getClass().getResourceAsStream(
+								"/org/fife/ui/rsyntaxtextarea/themes/dark.xml"));
+						theme.apply(textArea);
+						textArea.setBackground(Color.BLACK);
+						sp.getGutter().setBackground(Color.black);
+						sp.getGutter().setBorderColor(Color.orange);
+						sp.getGutter().setLineNumberColor(Color.ORANGE);
+					} catch (IOException ioe) { 
+						ioe.printStackTrace();
+					}
+					themedark=false;
+				}
+
+			}
+
+
+
+		});
 		/**
 		 *logo in images folder
 		 */
-		
-		
-		
+
+
+
 		JLabel pythonlabl = new JLabel("");
+		pythonlabl.setHorizontalAlignment(SwingConstants.TRAILING);
 		pythonlabl.setHorizontalTextPosition(SwingConstants.LEADING);
 		pythonlabl.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		pythonlabl.setIcon(new ImageIcon("C:\\Users\\Rakshith Rai\\git\\beta\\PePer\\images\\Python.png"));
 		GroupLayout gl_topPanel = new GroupLayout(topPanel);
 		gl_topPanel.setHorizontalGroup(
-			gl_topPanel.createParallelGroup(Alignment.TRAILING)
+				gl_topPanel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(Alignment.LEADING, gl_topPanel.createSequentialGroup()
-					.addComponent(mainLogo)
-					.addPreferredGap(ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
-					.addComponent(pythonlabl, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-		);
+						.addComponent(mainLogo)
+						.addPreferredGap(ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
+						.addComponent(pythonlabl, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap())
+				);
 		gl_topPanel.setVerticalGroup(
-			gl_topPanel.createParallelGroup(Alignment.LEADING)
+				gl_topPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_topPanel.createSequentialGroup()
-					.addGroup(gl_topPanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_topPanel.createSequentialGroup()
-							.addGap(2)
-							.addComponent(mainLogo))
-						.addGroup(gl_topPanel.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(pythonlabl, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
+						.addGroup(gl_topPanel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_topPanel.createSequentialGroup()
+										.addGap(2)
+										.addComponent(mainLogo))
+								.addGroup(gl_topPanel.createSequentialGroup()
+										.addContainerGap()
+										.addComponent(pythonlabl, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)))
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				);
 		topPanel.setLayout(gl_topPanel);
 		gl_layeredPane.setAutoCreateGaps(true);
 		layeredPane.setLayout(gl_layeredPane);
@@ -661,7 +666,7 @@ public class PePer {
 			setLayout(new BorderLayout());
 			add(label, BorderLayout.LINE_START);
 			add(new JLabel(new SizeGripIcon()), BorderLayout.LINE_END);
-			
+
 		}
 
 		void setLabel(String label) {
